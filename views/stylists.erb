@@ -1,0 +1,16 @@
+<h1><strong>Valour's esteemed Stylists</strong></h1>
+
+ <% if @stylist.any?() %>
+    <h3>Meet our stylists:</h3>
+
+    <ul>
+      <% @stylist.each() do |stylist| %>
+        <li><a href = "/stylist/<%= stylist.id()%>"><%= stylist.name() %></a></li>
+        <% end %>
+      </ul>
+
+      <% else %>
+
+      <p>There are no stylists hired yet</p>
+
+      <% end %>
