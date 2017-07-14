@@ -20,3 +20,27 @@ require("sinatra")
     stylist.save()
     erb(:success)
   end
+
+  get("/stylists") do
+    @stylist = Stylist.all()
+    erb(:stylists)
+  end
+
+  get("/stylists/:id") do
+    @stylist = Stylist.find(params.fetch("id").to_i())
+    erb(:stylist)
+  end
+
+  post("/tasks") do
+    name = params.fetch("name")
+    stylist_id = params.fetch("stylist_id").to_i()
+    @stylist = Stylist.find(stylist_id)
+    @client = Client.new({:name => name, :stylist_id => stylist_id})
+    @stylist.save()
+    erb(:success)
+  end
+
+  get("/stylists/:id/edit") do
+    @stylist = Stylist.find(params.fetch("id").to_i())
+    erb(:stylist_edit)
+  end
