@@ -49,5 +49,15 @@ require("rspec")
         expect(Stylist.id()).to(be_an_instance_of(Fixnum))
       end
     end
-    
+
+    describe(".find") do
+      it("returns a stylist by its ID") do
+        test_stylist = Stylist.new({:name => "Joe", :id => nil})
+        test_stylist.save()
+        test_stylist2 = List.new({:name => "Brian", :id => nil})
+        test_list2.save()
+        expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+      end
+    end
+
   end

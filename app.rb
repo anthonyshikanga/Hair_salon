@@ -18,5 +18,5 @@ require("sinatra")
     name = params.fetch("name")
     stylist = Stylist.new({:name =>name, :id =>nil})
     stylist.save()
-    erb(:stylist_success)
+    erb(:success)
   end
